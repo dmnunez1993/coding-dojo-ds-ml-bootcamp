@@ -1,0 +1,6 @@
+[MASTER]
+disable=
+    invalid-name
+
+[DESIGN]
+max-parents=15

@@ -1,0 +1,8 @@
+# Macos
+.DS_Store
+
+# Pyenv
+.python-version
+
+# Vscode
+.vscode/
