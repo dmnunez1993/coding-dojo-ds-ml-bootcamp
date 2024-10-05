@@ -1,0 +1,20 @@
+Ingresos totales: 17050.0
+Producto más vendido: Prod 2
+
+Promedio de precios por producto:
+Producto	Promedio
+Prod 1		150.0
+Prod 2		100.0
+Prod 3		120.0
+
+Ingresos por día:
+Fecha		Ingresos
+2024-09-01	5300.0
+2024-09-02	5700.0
+2024-09-03	6050.0
+
+Resumen ventas:
+Producto	Cant. Total	Ingresos Totales	Precio Promedio
+Prod 1		35		5250.0			150.0
+Prod 2		70		7000.0			100.0
+Prod 3		40		4800.0			120.0
