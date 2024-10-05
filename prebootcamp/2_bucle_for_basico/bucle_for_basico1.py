@@ -79,11 +79,11 @@ def main():
     """
     Función Principal
     """
-    # ejecutar_ejercicio_1()
-    # ejecutar_ejercicio_2()
-    # ejecutar_ejercicio_3()
-    # ejecutar_ejercicio_4()
-    # ejecutar_ejercicio_5()
+    ejecutar_ejercicio_1()
+    ejecutar_ejercicio_2()
+    ejecutar_ejercicio_3()
+    ejecutar_ejercicio_4()
+    ejecutar_ejercicio_5()
     ejecutar_ejercicio_6()
 
 
