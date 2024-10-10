@@ -1,1 +1,1 @@
-Repositorio para seguimiento de Curso DS Coding Dojo
+Repositorio para seguimiento de Curso Data Science + Machine Learning de Coding Dojo
