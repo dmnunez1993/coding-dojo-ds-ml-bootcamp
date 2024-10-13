@@ -1,44 +1,49 @@
+"""
+Resolución a Ejercicio Análisis de Datos con NumPy (Core)
+"""
 import numpy as np
 
 
 def generar_datos_ventas(productos, tiendas, dias):
     # Genera datos de ventas aleatorias para el número de productos, tiendas y días especificados
-    pass
+    np.random.seed(0)
+    return np.random.randint(0, 101, (productos, tiendas, dias))
 
 
 def calcular_totales_ventas_por_producto(datos):
     # Calcula el total de ventas por producto a lo largo de la semana
-    pass
+    return np.sum(datos, axis=(1, 2))
 
 
 def calcular_totales_ventas_por_tienda(datos):
     # Calcula el total de ventas por tienda a lo largo de la semana
-    pass
+    return np.sum(datos, axis=(0, 2))
 
 
 def calcular_promedio_ventas_por_producto(datos):
     # Calcula el promedio de ventas por producto por día
-    pass
+    return np.mean(datos, axis=(1, 2))
 
 
 def calcular_promedio_ventas_por_tienda(datos):
     # Calcula el promedio de ventas por tienda por día
-    pass
+    return np.mean(datos, axis=(0, 2))
 
 
 def encontrar_producto_mayor_menor_ventas(totales_por_producto):
     # Encuentra el producto con mayor y menor ventas totales en la semana
-    pass
+    mayores_ventas = np.argmax(totales_por_producto)
+    menores_ventas = np.argmin(totales_por_producto)
+
+    return mayores_ventas, menores_ventas
 
 
 def encontrar_tienda_mayor_menor_ventas(totales_por_tienda):
     # Encuentra la tienda con mayor y menor ventas totales en la semana
-    pass
+    mayores_ventas = np.argmax(totales_por_tienda)
+    menores_ventas = np.argmin(totales_por_tienda)
 
-
-def imprimir_resumen(estudiantes):
-    # Imprime un resumen con el nombre de los estudiantes, su promedio y su estado
-    pass
+    return mayores_ventas, menores_ventas
 
 
 def main():
@@ -47,7 +52,9 @@ def main():
     dias = 7
 
     # Genera los datos de ventas
+
     datos = generar_datos_ventas(productos, tiendas, dias)
+    print(datos)
 
     # Calcula los totales y promedios
     totales_por_producto = calcular_totales_ventas_por_producto(datos)
