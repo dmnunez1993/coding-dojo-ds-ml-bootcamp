@@ -12,4 +12,5 @@ Este proyecto analiza los datos de una tienda retail usando técnicas de ciencia
 ## Instrucciones de uso
 
 1. Clonar el repositorio: `git clone https://github.com/dmnunez1993/retail-sales-analysis.git`
-2. Instala las dependencias: `pip install -r requirements.txt`
+2. Navegar a esta carpeta: `cd 1_python_para_ciencia_de_datos/4_analisis_y_prediccion_de_ventas_tienda_retail/`
+3. Instala las dependencias: `pip install -r requirements.txt`
