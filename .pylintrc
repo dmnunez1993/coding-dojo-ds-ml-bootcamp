@@ -1,7 +1,9 @@
 [MASTER]
 disable=
     invalid-name,
-    consider-using-enumerate
+    consider-using-enumerate,
+    missing-function-docstring,
+    line-too-long,
 
 [DESIGN]
 max-parents=15
