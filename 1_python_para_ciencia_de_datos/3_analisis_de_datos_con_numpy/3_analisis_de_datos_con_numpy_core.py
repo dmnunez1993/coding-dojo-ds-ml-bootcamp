@@ -6,7 +6,6 @@ import numpy as np
 
 def generar_datos_ventas(productos, tiendas, dias):
     # Genera datos de ventas aleatorias para el número de productos, tiendas y días especificados
-    np.random.seed(0)
     return np.random.randint(0, 101, (productos, tiendas, dias))
 
 
