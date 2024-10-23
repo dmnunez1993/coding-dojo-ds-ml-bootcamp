@@ -5,7 +5,7 @@ Estas funciones fueron creadas para manejar todos los datasets.
 import matplotlib.pyplot as plt
 
 
-def plot_histograms(df, columns=None):
+def plot_histograms(df):
     # Configuración de tamaños encontrado aquí: https://scales.arabpsychology.com/stats/how-do-you-change-the-figure-size-of-a-pandas-histogram/
     fig = plt.figure(figsize=(20, 15))
     ax = fig.gca()
