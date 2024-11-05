@@ -9,3 +9,6 @@ __pycache__/
 
 # Vscode
 .vscode/
+
+# Kaggle credentials
+kaggle.json
