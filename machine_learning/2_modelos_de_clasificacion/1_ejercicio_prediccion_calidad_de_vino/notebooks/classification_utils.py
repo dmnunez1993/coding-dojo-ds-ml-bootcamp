@@ -12,6 +12,8 @@ def graficar_matriz_confusion(matriz_confusion, labels=None, figsize=(10, 8)):
         ax=ax,
     )
 
+    ax.set_xlabel("Predicción")
+    ax.set_ylabel("Valores Reales")
     if labels is not None:
         ax.set_xticks(ticks=ax.get_xticks(), labels=labels)
         ax.set_yticks(ticks=ax.get_yticks(), labels=labels)
