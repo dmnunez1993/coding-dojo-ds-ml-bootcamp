@@ -42,7 +42,10 @@ def graficar_histogramas(
     j_actual = 0
 
     for columna in columnas_df:
-        ax = axes[i_actual][j_actual]
+        if nro_filas == 1:
+            ax = axes[j_actual]
+        else:
+            ax = axes[i_actual][j_actual]
 
         sns.histplot(df[columna], kde=kde, bins=bins, ax=ax)
 
@@ -76,7 +79,10 @@ def graficar_boxplots(df, columnas_df, nro_columnas=3, figsize=(14, 10)):
     j_actual = 0
 
     for columna in columnas_df:
-        ax = axes[i_actual][j_actual]
+        if nro_filas == 1:
+            ax = axes[j_actual]
+        else:
+            ax = axes[i_actual][j_actual]
 
         sns.boxplot(df[columna], ax=ax)
 
@@ -92,12 +98,20 @@ def graficar_boxplots(df, columnas_df, nro_columnas=3, figsize=(14, 10)):
     plt.show()
 
 
+def obtener_columnas(df):
+    return df.columns.tolist()
+
+
 def obtener_columnas_numericas_df(df):
     return df.select_dtypes(include=[np.number]).columns.tolist()
 
 
 def obtener_columnas_categoricas_df(df):
-    return df.select_dtypes(include=['string', 'object']).columns.tolist()
+    return df.select_dtypes(include=[
+        'string',
+        'object',
+        'category',
+    ]).columns.tolist()
 
 
 def obtener_estadisticas_descriptivas_df(df, num_decimales=None):
@@ -118,6 +132,35 @@ def obtener_estadisticas_descriptivas_df(df, num_decimales=None):
         estadisticas = estadisticas.round(2)
 
     return estadisticas
+
+
+def obtener_datos_outliers_df(df):
+    columnas_numericas = obtener_columnas_numericas_df(df)
+
+    df_outliers = pd.DataFrame()
+
+    for columna in columnas_numericas:
+        Q1 = df[columna].quantile(0.25)
+        Q3 = df[columna].quantile(0.75)
+        IQR = Q3 - Q1
+
+        limite_minimo = Q1 - 1.5 * IQR
+        limite_maximo = Q3 + 1.5 * IQR
+
+        outliers = df[(df[columna] < limite_minimo) |
+                      (df[columna] > limite_maximo)][columna]
+
+        num_outliers = outliers.count()
+        porcentaje_outliers = (outliers.count() / df[columna].count()) * 100
+
+        df_outliers[columna] = {
+            "Nro. Outliers": num_outliers,
+            "Porc. Outliers": porcentaje_outliers,
+            "Límite mínimo": limite_minimo,
+            "Límite máximo": limite_maximo
+        }
+
+    return df_outliers
 
 
 def obtener_estadisticas_descriptivas_df_es(df, num_decimales=None):
