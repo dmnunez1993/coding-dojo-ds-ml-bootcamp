@@ -1,3 +1,4 @@
+lightgbm==4.5.0
 matplotlib==3.9.2
 numpy==2.1.2
 opendatasets==0.1.22
