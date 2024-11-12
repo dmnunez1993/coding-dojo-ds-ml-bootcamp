@@ -19,3 +19,24 @@ def graficar_matriz_confusion(matriz_confusion, labels=None, figsize=(10, 8)):
         ax.set_yticks(ticks=ax.get_yticks(), labels=labels)
     plt.title("Matriz de Confusión")
     plt.show()
+
+
+def guardar_matriz_confusion(
+    matriz_confusion, camino_salida, labels=None, figsize=(10, 8)
+):
+    _, ax = plt.subplots(nrows=1, ncols=1, figsize=figsize)
+    sns.heatmap(
+        matriz_confusion,
+        annot=True,
+        cmap='Blues',
+        center=0,
+        ax=ax,
+    )
+
+    ax.set_xlabel("Predicción")
+    ax.set_ylabel("Valores Reales")
+    if labels is not None:
+        ax.set_xticks(ticks=ax.get_xticks(), labels=labels)
+        ax.set_yticks(ticks=ax.get_yticks(), labels=labels)
+    plt.title("Matriz de Confusión")
+    plt.savefig(camino_salida, dpi='figure', format=None)
