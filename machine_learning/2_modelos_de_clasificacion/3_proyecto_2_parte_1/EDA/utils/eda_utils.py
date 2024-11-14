@@ -215,6 +215,8 @@ def graficar_barras_conteo(
             i_actual += 1
             j_actual = 0
 
+        df.drop("counts", axis=1, inplace=True)
+
     plt.tight_layout()
     plt.show()
 
