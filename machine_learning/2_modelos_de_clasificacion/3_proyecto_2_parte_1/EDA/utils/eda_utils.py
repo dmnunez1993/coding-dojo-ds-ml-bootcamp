@@ -180,6 +180,45 @@ def graficar_barras(
     plt.show()
 
 
+def graficar_barras_conteo(
+    df, columnas_x, columna_y, nro_columnas=3, figsize=(14, 10)
+):
+    nro_filas = int(len(columnas_x) / nro_columnas)
+    remanente = len(columnas_x) % nro_columnas
+
+    if remanente > 0:
+        nro_filas += 1
+
+    _, axes = plt.subplots(nrows=nro_filas, ncols=nro_columnas, figsize=figsize)
+
+    i_actual = 0
+    j_actual = 0
+
+    for columna in columnas_x:
+        df["counts"] = np.zeros(len(df))
+        df_agrupado = df.groupby([columna,
+                                  columna_y])["counts"].count().reset_index()
+        if nro_filas == 1:
+            ax = axes[j_actual]
+        else:
+            ax = axes[i_actual][j_actual]
+
+        sns.barplot(df_agrupado, x=columna, y="counts", hue=columna_y, ax=ax)
+
+        ax.set_title(f"Gráfico de barra cant. {columna} vs {columna_y}")
+        ax.set_xlabel(columna_y)
+        ax.set_ylabel(columna)
+
+        j_actual += 1
+
+        if j_actual >= nro_columnas:
+            i_actual += 1
+            j_actual = 0
+
+    plt.tight_layout()
+    plt.show()
+
+
 def graficar_mapa_correlacion(
     df, columnas_de_interes, method='pearson', figsize=(14, 10)
 ):
