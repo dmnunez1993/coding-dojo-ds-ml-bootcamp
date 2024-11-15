@@ -284,6 +284,12 @@ def obtener_columnas_categoricas_df(df):
     ]).columns.tolist()
 
 
+def obtener_columnas_booleanas_df(df):
+    return df.select_dtypes(include=[
+        'bool',
+    ]).columns.tolist()
+
+
 def obtener_estadisticas_descriptivas_df(df, num_decimales=None):
     campos_numericos = obtener_columnas_numericas_df(df)
 
