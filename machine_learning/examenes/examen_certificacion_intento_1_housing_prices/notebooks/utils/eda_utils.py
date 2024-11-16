@@ -21,6 +21,10 @@ def variation_coefficient(series):
     return series.std() / series.mean()
 
 
+def mode(series):
+    return series.mode()
+
+
 def graficar_histogramas(
     df,
     columnas_df,
@@ -47,7 +51,37 @@ def graficar_histogramas(
         else:
             ax = axes[i_actual][j_actual]
 
+        Q1 = np.percentile(df[columna].dropna(), 25)
+        Q2 = np.percentile(df[columna].dropna(), 50)
+        Q3 = np.percentile(df[columna].dropna(), 75)
+        IQR = Q3 - Q1
+
         sns.histplot(df[columna], kde=kde, bins=bins, ax=ax)
+
+        ax.axvline(
+            Q1,
+            color="orange",
+            linestyle="dashed",
+            linewidth=2,
+            label=f"Q1 ({Q1:.2f})"
+        )
+        ax.axvline(
+            Q2,
+            color="red",
+            linestyle="dashed",
+            linewidth=2,
+            label=f"Q2 (mediana) ({Q1:.2f})"
+        )
+        ax.axvline(
+            Q3,
+            color='purple',
+            linestyle='dashed',
+            linewidth=2,
+            label=f"Q3 ({Q3:.2f})"
+        )
+        ax.axvspan(Q1, Q3, color="gray", alpha=0.3, label=f"IQR ({IQR:.2f})")
+
+        ax.legend()
 
         ax.set_title(f"Histograma {columna}")
         ax.set_xlabel(columna)
@@ -181,6 +215,54 @@ def graficar_barras(
 
 
 def graficar_barras_conteo(
+    df,
+    columnas_x,
+    nro_columnas=3,
+    figsize=(14, 10),
+    rotations=None,
+):
+    nro_filas = int(len(columnas_x) / nro_columnas)
+    remanente = len(columnas_x) % nro_columnas
+
+    if remanente > 0:
+        nro_filas += 1
+
+    _, axes = plt.subplots(nrows=nro_filas, ncols=nro_columnas, figsize=figsize)
+
+    i_actual = 0
+    j_actual = 0
+
+    for columna in columnas_x:
+        df["counts"] = np.zeros(len(df))
+        df_agrupado = df.groupby(columna)["counts"].count().reset_index()
+        if nro_filas == 1:
+            ax = axes[j_actual]
+        else:
+            ax = axes[i_actual][j_actual]
+
+        sns.barplot(df_agrupado, x=columna, y="counts", hue=columna, ax=ax)
+
+        ax.set_title(f"Gráfico de barra cant. {columna}")
+        ax.set_xlabel(columna)
+        ax.set_ylabel("Cant.")
+
+        if rotations is not None:
+            if columna in rotations:
+                ax.tick_params(axis='x', rotation=rotations[columna])
+
+        j_actual += 1
+
+        if j_actual >= nro_columnas:
+            i_actual += 1
+            j_actual = 0
+
+        df.drop("counts", axis=1, inplace=True)
+
+    plt.tight_layout()
+    plt.show()
+
+
+def graficar_barras_conteo_contra_columna(
     df, columnas_x, columna_y, nro_columnas=3, figsize=(14, 10)
 ):
     nro_filas = int(len(columnas_x) / nro_columnas)
@@ -216,6 +298,52 @@ def graficar_barras_conteo(
             j_actual = 0
 
         df.drop("counts", axis=1, inplace=True)
+
+    plt.tight_layout()
+    plt.show()
+
+
+def graficar_barras_promedio_contra_columna(
+    df,
+    columnas_x,
+    columna_y,
+    nro_columnas=3,
+    figsize=(14, 10),
+    rotations=None,
+):
+    nro_filas = int(len(columnas_x) / nro_columnas)
+    remanente = len(columnas_x) % nro_columnas
+
+    if remanente > 0:
+        nro_filas += 1
+
+    _, axes = plt.subplots(nrows=nro_filas, ncols=nro_columnas, figsize=figsize)
+
+    i_actual = 0
+    j_actual = 0
+
+    for columna in columnas_x:
+        df_agrupado = df.groupby([columna])[columna_y].mean().reset_index()
+        if nro_filas == 1:
+            ax = axes[j_actual]
+        else:
+            ax = axes[i_actual][j_actual]
+
+        sns.barplot(df_agrupado, x=columna, y=columna_y, hue=columna, ax=ax)
+
+        ax.set_title(f"Gráfico de barra promedios. {columna} vs {columna_y}")
+        ax.set_xlabel(columna)
+        ax.set_ylabel(columna_y)
+
+        if rotations is not None:
+            if columna in rotations:
+                ax.tick_params(axis='x', rotation=rotations[columna])
+
+        j_actual += 1
+
+        if j_actual >= nro_columnas:
+            i_actual += 1
+            j_actual = 0
 
     plt.tight_layout()
     plt.show()
