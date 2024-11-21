@@ -6,6 +6,8 @@ A través de este proyecto, se tiene como objetivo predecir la cantidad de compr
 
 - `data/`: Contiene los datasets analizados
 - `notebooks/`: Contiene los notebook Jupyter usados para el análsis de datos
+- `presentation/`: Contiene una presentación de una página del proyecto
+- `reportes/`: Contiene reportes e imagenes del proyecto
 - `README.md`: Este archivo
 
 ## Notebooks
