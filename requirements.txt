@@ -5,6 +5,7 @@ numpy==2.1.2
 opendatasets==0.1.22
 optuna==4.1.0
 pandas==2.2.3
+prophet==1.1.6
 seaborn==0.13.2
 scikit-learn==1.5.2
 tensorflow==2.18.0
