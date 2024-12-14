@@ -404,6 +404,60 @@ def graficar_barras_promedio_contra_columna(
     plt.show()
 
 
+def graficar_tortas_conteo(
+    df,
+    columnas_x,
+    nro_columnas=3,
+    figsize=(14, 10),
+    rotations=None,
+):
+    nro_filas = int(len(columnas_x) / nro_columnas)
+    remanente = len(columnas_x) % nro_columnas
+
+    if remanente > 0:
+        nro_filas += 1
+
+    _, axes = plt.subplots(nrows=nro_filas, ncols=nro_columnas, figsize=figsize)
+
+    i_actual = 0
+    j_actual = 0
+
+    for columna in columnas_x:
+        df["counts"] = np.zeros(len(df))
+        df_agrupado = df.groupby(columna)["counts"].count().reset_index()
+        if nro_filas == 1 and nro_columnas == 1:
+            ax = axes
+        elif nro_filas == 1:
+            ax = axes[j_actual]
+        else:
+            ax = axes[i_actual][j_actual]
+
+        ax.pie(
+            df_agrupado["counts"],
+            autopct="%.2f%%",
+            labels=df_agrupado[columna]
+        )
+
+        ax.set_title(f"Gráfico circular cant. {columna}")
+        ax.set_xlabel(columna)
+        ax.set_ylabel("Cant.")
+
+        if rotations is not None:
+            if columna in rotations:
+                ax.tick_params(axis='x', rotation=rotations[columna])
+
+        j_actual += 1
+
+        if j_actual >= nro_columnas:
+            i_actual += 1
+            j_actual = 0
+
+        df.drop("counts", axis=1, inplace=True)
+
+    plt.tight_layout()
+    plt.show()
+
+
 def graficar_mapa_correlacion(
     df, columnas_de_interes, method='pearson', figsize=(14, 10)
 ):
@@ -459,6 +513,8 @@ def obtener_datos_outliers_df(df):
     df_outliers = pd.DataFrame()
 
     for columna in columnas_numericas:
+        minimo = df[columna].min()
+        maximo = df[columna].max()
         Q1 = df[columna].quantile(0.25)
         Q3 = df[columna].quantile(0.75)
         IQR = Q3 - Q1
@@ -476,7 +532,12 @@ def obtener_datos_outliers_df(df):
             "Nro. Outliers": num_outliers,
             "Porc. Outliers": porcentaje_outliers,
             "Límite mínimo": limite_minimo,
-            "Límite máximo": limite_maximo
+            "Límite máximo": limite_maximo,
+            "Q1": Q1,
+            "Q3": Q3,
+            "IQR": IQR,
+            "Mínimo valor encontrado": minimo,
+            "Máximo valor encontrado": maximo,
         }
 
     return df_outliers
