@@ -26,6 +26,7 @@ def graficar_matriz_confusion(matriz_confusion, labels=None, figsize=(10, 8)):
         ax.set_xticks(ticks=ax.get_xticks(), labels=labels)
         ax.set_yticks(ticks=ax.get_yticks(), labels=labels)
     plt.title("Matriz de Confusión")
+    plt.tight_layout()
     plt.show()
 
 
