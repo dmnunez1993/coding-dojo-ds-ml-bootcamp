@@ -74,32 +74,32 @@ Se visualizaron también los datos proyectados en el espacio de los componentes 
 
 De los gráficos podemos destacar:
 
-* En el caso del gráfico de dispersión sin escalamiento y en el de dispersión con normalización, podemos notar dos agrupamientos de los componentes:
-    * El primer grupo muestra una correlación ascendente. Es decir, a medida que incrementa el componenet principal 1, también incrementa el componente principal 2.
-    * El segundo grupo muestra una correlación descendente. Es decir, a medida que aumenta el componente principal 1, el segundo disminuye.
-    * Estas relaciones podrían también ser detectadas por un modelo predictivo, así que es bueno que existan. No obstante, será necesario introducir al modelo de prediccion no linealidad para que pueda detectar este cambio en la dirección de las correlaciones.
-* En el Gráfico de Disperción con estandarización, podemos notar dos agrupamientos:
-    * El primer grupo muestra una correlación descendente. Es decir, a medida que aumenta el componente principal 1, el segundo disminuye.
-    * El segundo grupo muestra una correlación ascendente. Es decir, a medida que incrementa el componente principal 1, el segundo aumenta también.
-    * De manera similar al caso anterior, las relaciones podrían tener un efecto positivo en el modelo de predicción, pero hay que agregar activaciones no lineales al modelo MLP a entrenar.
-* En el último gráfico, podemos notar que inicialmente se ve una correlación, no obstante, a medida que incrementa el componente principal 1, incrementa la dispersión, lo cual indica una corelación fuerte al principio pero que va volviéndose más debil.
+- En el caso del gráfico de dispersión sin escalamiento y en el de dispersión con normalización, podemos notar dos agrupamientos de los componentes:
+  - El primer grupo muestra una correlación ascendente. Es decir, a medida que incrementa el componenet principal 1, también incrementa el componente principal 2.
+  - El segundo grupo muestra una correlación descendente. Es decir, a medida que aumenta el componente principal 1, el segundo disminuye.
+  - Estas relaciones podrían también ser detectadas por un modelo predictivo, así que es bueno que existan. No obstante, será necesario introducir al modelo de prediccion no linealidad para que pueda detectar este cambio en la dirección de las correlaciones.
+- En el Gráfico de Disperción con estandarización, podemos notar dos agrupamientos:
+  - El primer grupo muestra una correlación descendente. Es decir, a medida que aumenta el componente principal 1, el segundo disminuye.
+  - El segundo grupo muestra una correlación ascendente. Es decir, a medida que incrementa el componente principal 1, el segundo aumenta también.
+  - De manera similar al caso anterior, las relaciones podrían tener un efecto positivo en el modelo de predicción, pero hay que agregar activaciones no lineales al modelo MLP a entrenar.
+- En el último gráfico, podemos notar que inicialmente se ve una correlación, no obstante, a medida que incrementa el componente principal 1, incrementa la dispersión, lo cual indica una corelación fuerte al principio pero que va volviéndose más debil.
 
 ### Análisis de contribuciones de las columnas a las componentes principales
 
 Se realizó un análisis de las columnas que contribuyen más a cada componente principal. Los resultados de este análsis son los siguientes:
 
-* En el caso del PCA sin escalamiento:
-    * Para el componente principal 1, los datos más influyentes son: fBodyAccJerk, fBodyAcc, fBodyAccMag. Estos parámetros son indicadores de movimiento, por lo que el movimiento se está capturando en este componente.
-    * Para el componente principal 2, los datos más influyentes son fBodyAcc, fBodyGyroMag. En este caso, en este componente se está capturando tanto partes de la aceleración como la orientación del cuerpo.
-* En el caso del PCA con normalización:
-    * Para el componente principal 1, los datos más influyentes son: fBodyAccJerk, fBodyAcc, fBodyAccMag. Estos parámetros son indicadores de movimiento, por lo que el movimiento se está capturando en este componente.
-    * Para el componente principal 2, vuelven a aparecer partes de fBodyAcc y fBodyGyroMag, con la adición de fGravityAcc. Esto indica que en este componente influye también bastante la gravedad, a diferencia del PCA sin escalamiento.
-* En el caso del PCA con estandarización:
-    * Para el componente principal 1, los datos más influyentes son: fBodyAcc, fBodyAccJerk, fBodyGyro. Esto nos indica que en este componente se están capturando partes de tanto la aceleración como la orientación.
-    * Para el componente principal 2, vuelven a aparecer partes de fBodyAcc y fBodyGyroMag, con la adición de fGravityAcc. También podemos visualizar efectos de la gravedad en este componente.
-* En el caso del PCA con escalamiento Robust:
-    * En la componente principal 1, los datos más influyentes son: fBodyAccJerk, fBodyGyro. Por tanto, en este componente también se están capturando datos de aceleración y orientación.
-    * En la componente principal 2, se puede visualizar de vuelta fBodyAccJerk, fBodyGyro, y tGravityAcc. También notamos una leve influencia de la gravedad en este componente.
+- En el caso del PCA sin escalamiento:
+  - Para el componente principal 1, los datos más influyentes son: fBodyAccJerk, fBodyAcc, fBodyAccMag. Estos parámetros son indicadores de movimiento, por lo que el movimiento se está capturando en este componente.
+  - Para el componente principal 2, los datos más influyentes son fBodyAcc, fBodyGyroMag. En este caso, en este componente se está capturando tanto partes de la aceleración como la orientación del cuerpo.
+- En el caso del PCA con normalización:
+  - Para el componente principal 1, los datos más influyentes son: fBodyAccJerk, fBodyAcc, fBodyAccMag. Estos parámetros son indicadores de movimiento, por lo que el movimiento se está capturando en este componente.
+  - Para el componente principal 2, vuelven a aparecer partes de fBodyAcc y fBodyGyroMag, con la adición de fGravityAcc. Esto indica que en este componente influye también bastante la gravedad, a diferencia del PCA sin escalamiento.
+- En el caso del PCA con estandarización:
+  - Para el componente principal 1, los datos más influyentes son: fBodyAcc, fBodyAccJerk, fBodyGyro. Esto nos indica que en este componente se están capturando partes de tanto la aceleración como la orientación.
+  - Para el componente principal 2, vuelven a aparecer partes de fBodyAcc y fBodyGyroMag, con la adición de fGravityAcc. También podemos visualizar efectos de la gravedad en este componente.
+- En el caso del PCA con escalamiento Robust:
+  - En la componente principal 1, los datos más influyentes son: fBodyAccJerk, fBodyGyro. Por tanto, en este componente también se están capturando datos de aceleración y orientación.
+  - En la componente principal 2, se puede visualizar de vuelta fBodyAccJerk, fBodyGyro, y tGravityAcc. También notamos una leve influencia de la gravedad en este componente.
 
 ## Modelado con MLP
 
@@ -107,15 +107,15 @@ Se realizó un análisis de las columnas que contribuyen más a cada componente 
 
 Se optó por usar el PCA probado previamente para el entrenamiento de este modelo. Se tomaron las siguientes decisiones previos a la implementación y prueba del modelo:
 
-* Se necesitarán 34 entradas, que provendrán de la conversión del PCA.
-* Se necesitarán 6 salidas, que corresponden a cada clase a ser predicha.
-* Se agregarán dos capas a la red neuronal, una de 64 entradas y otra de 32, las dos con activación de tipo relu para introducir no linealidad al modelo de acuerdo a lo visto en las gráficas de dispersión del PCA.
-* Se agregará un dropout a la salida de cada capa con el objetivo de evitar overfitting.
-* Se usará categorical_crossentropy como función de pérdida para el modelo. Esta función de pérdida es usada específicamente para modelos de clasificación multi clase.
-* Se usará accuracy como métrica principal, con el objetivo de predecir correctamente la mayor cantidad de clases.
-* Se usara Adam como optimizador para la búsqueda de los mínimos.
-* Se seleccionará learning_rate como 0.001 para. Este valor debe ser bajo para alcanzar un buen mínimo. Este valor no debe ser muy alto para permitir al Adam
-* Se seleccionará un batch_size de 16, pequeño, ya que el learning_rate seleccionado es bajo para este modelo.
+- Se necesitarán 34 entradas, que provendrán de la conversión del PCA.
+- Se necesitarán 6 salidas, que corresponden a cada clase a ser predicha.
+- Se agregarán dos capas a la red neuronal, una de 64 entradas y otra de 32, las dos con activación de tipo relu para introducir no linealidad al modelo de acuerdo a lo visto en las gráficas de dispersión del PCA.
+- Se agregará un dropout a la salida de cada capa con el objetivo de evitar overfitting.
+- Se usará categorical_crossentropy como función de pérdida para el modelo. Esta función de pérdida es usada específicamente para modelos de clasificación multi clase.
+- Se usará accuracy como métrica principal, con el objetivo de predecir correctamente la mayor cantidad de clases.
+- Se usara Adam como optimizador para la búsqueda de los mínimos.
+- Se seleccionará learning_rate como 0.001 para. Este valor debe ser bajo para alcanzar un buen mínimo. Este valor no debe ser muy alto para permitir al Adam
+- Se seleccionará un batch_size de 16, pequeño, ya que el learning_rate seleccionado es bajo para este modelo.
 
 Adicionalmente, se agregó la técnica de early_stopping, que monitorea la pérdida de validación del accuracy.
 
@@ -127,27 +127,27 @@ Se utilizaron los datos de entrenamiento y prueba que fueron utilizados previame
 
 Se realizaron cálculos de métricas como accuracy, precision, recall, f1 score, roc auc. Los resultados son los siguientes:
 
-| Métrica   | Valor   |
+| Métrica   | Valor |
 | --------- | ----: |
-| Accuracy  | 0.96    |
-| Precision | 0.96    |
-| Recall    | 0.96    |
-| F1        | 0.96    |
-| ROC AUC   | $1.00   |
+| Accuracy  |  0.96 |
+| Precision |  0.96 |
+| Recall    |  0.96 |
+| F1        |  0.96 |
+| ROC AUC   | $1.00 |
 
 Se realizó también un reporte de clasificación, que dió los siguientes resultados:
 
-precision  |  recall | f1-score | support
-| --------- | ----: | ----: | ----: |
-LAYING   |    1.00  |    1.00   |   1.00   |    428
-SITTING    |   0.94  |    0.89   |   0.92    |   386
-STANDING   |    0.90   |   0.94   |   0.92   |    411
-WALKING   |    0.98   |   1.00   |   0.99    |   366
-WALKING_DOWNSTAIRS   |    0.98    |   0.98   |   0.98    |   311
-WALKING_UPSTAIRS    |    1.00   |   0.98   |   0.99    |   304
-accuracy     |         |         |    0.96  |    2206
-macro avg    |   0.97    |  0.96   |   0.97   |   2206
-weighted avg   |    0.96   |   0.96  |    0.96   |   2206
+| precision          | recall | f1-score | support |
+| ------------------ | -----: | -------: | ------: | ---- |
+| LAYING             |   1.00 |     1.00 |    1.00 | 428  |
+| SITTING            |   0.94 |     0.89 |    0.92 | 386  |
+| STANDING           |   0.90 |     0.94 |    0.92 | 411  |
+| WALKING            |   0.98 |     1.00 |    0.99 | 366  |
+| WALKING_DOWNSTAIRS |   0.98 |     0.98 |    0.98 | 311  |
+| WALKING_UPSTAIRS   |   1.00 |     0.98 |    0.99 | 304  |
+| accuracy           |        |          |    0.96 | 2206 |
+| macro avg          |   0.97 |     0.96 |    0.97 | 2206 |
+| weighted avg       |   0.96 |     0.96 |    0.96 | 2206 |
 
 También, se obtuvo la matriz de confusión:
 
@@ -159,12 +159,12 @@ Se graficaron las curvas ROC-AUC usando la técnica One vs. Rest:
 
 De estos resultados, se sacaron las siguientes conclusiones:
 
-* Las métricas como accuracy, precision, recall, f1 score poseen todas un valor promedio de 0.96. Un valor bastante alto, indicando que el modelo MLP es un buen modelo para predecir las actividades de las personas en base a los sensores.
-* La métrica ROC AUC reporta un valor approx de 1.00, lo que indica que el modelo tiene una muy buena tasa de aciertos.
-* Del reporte de clasificación, podemos notar que la mayoría de las clases tienen un buen performance en métricas como precision, recall, f1-score, con la excepción de las clases SITTING y STANDING, que tienen métricas como precision, recall, f1-score un poco mas bajos que las demás clases.
-* La matriz de confusión del modelo nos indica, al igual que la conclusión anterior, que el modelo está teniendo un performance levemente menor para las clases SITTING y STANDING, teniendo 50 fallos para la clase SITTING que fueron predichos como STANDING, y 29 fallos para la clase STANDING que fueron predichas como SITTING.
-* Las curvas ROC AUC one vs rest también nos indican que el modelo tiene un peor performance en estas clases. Para las otras, las areas AUC oscilan entre 0.98 y 1.00
-* Esto nos indica, que este modelo no tiene problema en detectar actividades de movimiento, no obstante se encuentran más fallos para las classes en la que la persona no se está moviendo.
+- Las métricas como accuracy, precision, recall, f1 score poseen todas un valor promedio de 0.96. Un valor bastante alto, indicando que el modelo MLP es un buen modelo para predecir las actividades de las personas en base a los sensores.
+- La métrica ROC AUC reporta un valor approx de 1.00, lo que indica que el modelo tiene una muy buena tasa de aciertos.
+- Del reporte de clasificación, podemos notar que la mayoría de las clases tienen un buen performance en métricas como precision, recall, f1-score, con la excepción de las clases SITTING y STANDING, que tienen métricas como precision, recall, f1-score un poco mas bajos que las demás clases.
+- La matriz de confusión del modelo nos indica, al igual que la conclusión anterior, que el modelo está teniendo un performance levemente menor para las clases SITTING y STANDING, teniendo 50 fallos para la clase SITTING que fueron predichos como STANDING, y 29 fallos para la clase STANDING que fueron predichas como SITTING.
+- Las curvas ROC AUC one vs rest también nos indican que el modelo tiene un peor performance en estas clases. Para las otras, las areas AUC oscilan entre 0.98 y 1.00
+- Esto nos indica, que este modelo no tiene problema en detectar actividades de movimiento, no obstante se encuentran más fallos para las classes en la que la persona no se está moviendo.
 
 ### Visualización de curvas de aprendizaje.
 
@@ -182,11 +182,11 @@ También, se evaluó la precisión del modelo a través de las épocas:
 
 De estos gráficos de training y validación podemos destacar:
 
-* Inicialmente se puede visualizar una pérdida bastante alta en el accuracy, pero que va reduciéndose a medida que pasan más épocas de entrenamiento
-* En el caso de la pérdida de validación, se visualiza que dicha perdida se mantiene estable alrededor de los 0.1-0.2
-* Notamos también que hay una menor pérdida en la validación en las primeras épocas. Esto se nota tanto en los gráficos de pérdidas como en la diferencia. Esto se puede deber a que las capas de dropout causan que ciertas neuronas estén apagadas durante el entrenamiento, lo que puede llevar a que la pérdida de entrenamiento sea menor a la de validación inicialmente.
-* La época en la que la la pérdida de validación empieza a crecer es en la 10.
-* No se puede visualizar un incremento repentino en la pérdida de validación, por lo que el modelo está detectando los patrones correctos. Esto también nos indica que el modelo no está presentando overfitting.
+- Inicialmente se puede visualizar una pérdida bastante alta en el accuracy, pero que va reduciéndose a medida que pasan más épocas de entrenamiento
+- En el caso de la pérdida de validación, se visualiza que dicha perdida se mantiene estable alrededor de los 0.1-0.2
+- Notamos también que hay una menor pérdida en la validación en las primeras épocas. Esto se nota tanto en los gráficos de pérdidas como en la diferencia. Esto se puede deber a que las capas de dropout causan que ciertas neuronas estén apagadas durante el entrenamiento, lo que puede llevar a que la pérdida de entrenamiento sea menor a la de validación inicialmente.
+- La época en la que la la pérdida de validación empieza a crecer es en la 10.
+- No se puede visualizar un incremento repentino en la pérdida de validación, por lo que el modelo está detectando los patrones correctos. Esto también nos indica que el modelo no está presentando overfitting.
 
 ## 5. Discusión y análisis:
 
@@ -196,8 +196,8 @@ En el PCA, notamos que efectivamente hay una gran influencia sobre parámetros c
 
 Los parámetros encontrados que más influencian los componentes principales 1 y 2 son:
 
-* Para el componente principal 1, los datos más influyentes son: fBodyAccJerk, fBodyAcc, fBodyAccMag. Estos parámetros son indicadores de movimiento, por lo que el movimiento se está capturando en este componente.
-* Para el componente principal 2, los datos más influyentes son fBodyAcc, fBodyGyroMag. En este caso, en este componente se está capturando tanto partes de la aceleración como la orientación del cuerpo.
+- Para el componente principal 1, los datos más influyentes son: fBodyAccJerk, fBodyAcc, fBodyAccMag. Estos parámetros son indicadores de movimiento, por lo que el movimiento se está capturando en este componente.
+- Para el componente principal 2, los datos más influyentes son fBodyAcc, fBodyGyroMag. En este caso, en este componente se está capturando tanto partes de la aceleración como la orientación del cuerpo.
 
 El PCA también ayuda al entrenamiento de los modelos reduciendo las dimensiones de los datos de entrada, reteniendo la información más importante para el modelo. Esto permite un tiempo de entrenamiento más reducido, y un menor uso de memoria.
 
