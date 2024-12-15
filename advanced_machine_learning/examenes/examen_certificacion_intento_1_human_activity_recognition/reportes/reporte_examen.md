@@ -107,16 +107,16 @@ Se realizó un análisis de las columnas que contribuyen más a cada componente 
 
 Se optó por usar el PCA probado previamente para el entrenamiento de este modelo. Se tomaron las siguientes decisiones previos a la implementación y prueba del modelo:
 
-* Se necesitarán 34 entradas, que provendrán de la conversión del PCA.
-* Se necesitarán 6 salidas, que corresponden a cada clase a ser predicha.
-* Se agregarán dos capas a la red neuronal, una de 64 entradas y otra de 32, las dos con activación de tipo relu para introducir no linealidad al modelo de acuerdo a lo visto en las gráficas de dispersión del PCA.
-* Se agregará un dropout a la salida de cada capa con el objetivo de evitar overfitting.
-* Se usará categorical_crossentropy como función de pérdida para el modelo. Esta función de pérdida es usada específicamente para modelos de clasificación multi clase.
-* Se usará accuracy como métrica principal, con el objetivo de predecir correctamente la mayor cantidad de clases.
-* Se usara Adam como optimizador para la búsqueda de los mínimos.
-* Se seleccionará learning_rate como 0.001 para. Este valor debe ser bajo para alcanzar un buen mínimo con el optimizador.
-* Se seleccionará un batch_size de 16, pequeño, ya que el learning_rate seleccionado es bajo para este modelo.
-* Se utilizará la técnica de early stopping para detectar cuando la pérdida de validación ya no baja, disminuyendo la posibilidad de overfitting.
+- Se necesitarán 34 entradas, que provendrán de la conversión del PCA.
+- Se necesitarán 6 salidas, que corresponden a cada clase a ser predicha.
+- Se agregarán dos capas a la red neuronal, una de 64 entradas y otra de 32, las dos con activación de tipo relu para introducir no linealidad al modelo de acuerdo a lo visto en las gráficas de dispersión del PCA.
+- Se agregará un dropout a la salida de cada capa con el objetivo de evitar overfitting.
+- Se usará categorical_crossentropy como función de pérdida para el modelo. Esta función de pérdida es usada específicamente para modelos de clasificación multi clase.
+- Se usará accuracy como métrica principal, con el objetivo de predecir correctamente la mayor cantidad de clases.
+- Se usara Adam como optimizador para la búsqueda de los mínimos.
+- Se seleccionará learning_rate como 0.001 para. Este valor debe ser bajo para alcanzar un buen mínimo con el optimizador.
+- Se seleccionará un batch_size de 16, pequeño, ya que el learning_rate seleccionado es bajo para este modelo.
+- Se utilizará la técnica de early stopping para detectar cuando la pérdida de validación ya no baja, disminuyendo la posibilidad de overfitting.
 
 Se utilizaron los datos de entrenamiento y prueba que fueron utilizados previamente para el análisis PCA.
 
@@ -136,17 +136,17 @@ Se realizaron cálculos de métricas como accuracy, precision, recall, f1 score,
 
 Se realizó también un reporte de clasificación, que dió los siguientes resultados:
 
-| precision          | recall | f1-score | support |
-| ------------------ | -----: | -------: | ------: | ---- |
-| LAYING             |   1.00 |     1.00 |    1.00 | 428  |
-| SITTING            |   0.90 |     0.91 |    0.91 | 386  |
-| STANDING           |   0.91 |     0.91 |    0.91 | 411  |
-| WALKING            |   0.98 |     0.99 |    0.99 | 366  |
-| WALKING_DOWNSTAIRS |   0.99 |     0.97 |    0.98 | 311  |
-| WALKING_UPSTAIRS   |   0.98 |     0.98 |    0.98 | 304  |
-| accuracy           |        |          |    0.96 | 2206 |
-| macro avg          |   0.97 |     0.96 |    0.96 | 2206 |
-| weighted avg       |   0.96 |     0.96 |    0.96 | 2206 |
+| Nombre Actividad   | precision | recall | f1-score | support |
+| ------------------ | --------: | -----: | -------: | ------- |
+| LAYING             |      1.00 |   1.00 |     1.00 | 428     |
+| SITTING            |      0.90 |   0.91 |     0.91 | 386     |
+| STANDING           |      0.91 |   0.91 |     0.91 | 411     |
+| WALKING            |      0.98 |   0.99 |     0.99 | 366     |
+| WALKING_DOWNSTAIRS |      0.99 |   0.97 |     0.98 | 311     |
+| WALKING_UPSTAIRS   |      0.98 |   0.98 |     0.98 | 304     |
+| accuracy           |           |        |     0.96 | 2206    |
+| macro avg          |      0.97 |   0.96 |     0.96 | 2206    |
+| weighted avg       |      0.96 |   0.96 |     0.96 | 2206    |
 
 También, se obtuvo la matriz de confusión:
 
@@ -158,13 +158,13 @@ Se graficaron las curvas ROC-AUC usando la técnica One vs. Rest:
 
 De estos resultados, se sacaron las siguientes conclusiones:
 
-* Las métricas como accuracy, precision, recall, f1 score poseen todas un valor promedio de 0.96. Un valor bastante alto, indicando que el modelo MLP es un buen modelo para predecir las actividades de las personas en base a los sensores.
-* La métrica ROC AUC reporta un valor approx de 1.00, lo que indica que el modelo tiene una muy buena tasa de aciertos.
-* Del reporte de clasificación, podemos notar que la mayoría de las clases tienen un buen performance en métricas como precision, recall, f1-score, con la excepción de las clases SITTING y STANDING, que tienen métricas como precision, recall, f1-score un poco mas bajos que las demás clases.
-* La matriz de confusión del modelo nos indica, al igual que la conclusión anterior, que el modelo está teniendo un performance levemente menor para las clases SITTING y STANDING, teniendo 37 fallos para la clase SITTING que fueron predichos como STANDING, y 35 fallos para la clase STANDING que fueron predichas como SITTING.
-* Las curvas ROC AUC one vs rest también nos indican que el modelo tiene un peor performance en estas clases, con el AUC de 0.95 para standing y 0.94 para sitting. Para las otras, las areas AUC oscilan entre 0.98 y 1.00
-* Esto nos indica, que este modelo no tiene problema en detectar actividades de movimiento, no obstante se encuentran más fallos para las classes en la que la persona no se está moviendo.
-* No se necesitó realizar un reajuste de hiperparámetros, ya que los seleccionados son apropiados para este modelo.
+- Las métricas como accuracy, precision, recall, f1 score poseen todas un valor promedio de 0.96. Un valor bastante alto, indicando que el modelo MLP es un buen modelo para predecir las actividades de las personas en base a los sensores.
+- La métrica ROC AUC reporta un valor approx de 1.00, lo que indica que el modelo tiene una muy buena tasa de aciertos.
+- Del reporte de clasificación, podemos notar que la mayoría de las clases tienen un buen performance en métricas como precision, recall, f1-score, con la excepción de las clases SITTING y STANDING, que tienen métricas como precision, recall, f1-score un poco mas bajos que las demás clases.
+- La matriz de confusión del modelo nos indica, al igual que la conclusión anterior, que el modelo está teniendo un performance levemente menor para las clases SITTING y STANDING, teniendo 37 fallos para la clase SITTING que fueron predichos como STANDING, y 35 fallos para la clase STANDING que fueron predichas como SITTING.
+- Las curvas ROC AUC one vs rest también nos indican que el modelo tiene un peor performance en estas clases, con el AUC de 0.95 para standing y 0.94 para sitting. Para las otras, las areas AUC oscilan entre 0.98 y 1.00
+- Esto nos indica, que este modelo no tiene problema en detectar actividades de movimiento, no obstante se encuentran más fallos para las classes en la que la persona no se está moviendo.
+- No se necesitó realizar un reajuste de hiperparámetros, ya que los seleccionados son apropiados para este modelo.
 
 ### Visualización de curvas de aprendizaje.
 
