@@ -115,7 +115,7 @@ Se optó por usar el PCA probado previamente para el entrenamiento de este model
 - Se usará accuracy como métrica principal, con el objetivo de predecir correctamente la mayor cantidad de clases.
 - Se usara Adam como optimizador para la búsqueda de los mínimos.
 - Se seleccionará learning_rate como 0.001 para. Este valor debe ser bajo para alcanzar un buen mínimo con el optimizador.
-- Se seleccionará un batch_size de 16, pequeño, ya que el learning_rate seleccionado es bajo para este modelo.
+- Se seleccionará un batch_size de 16 para empezar. En caso de que el rendimiento sea bajo, se puede optar por incrementar este parámetro, teniendo en cuenta que también se deberá ajustar learning_rate en el optimizador Adam.
 - Se utilizará la técnica de early stopping para detectar cuando la pérdida de validación ya no baja, disminuyendo la posibilidad de overfitting.
 
 Se utilizaron los datos de entrenamiento y prueba que fueron utilizados previamente para el análisis PCA.
