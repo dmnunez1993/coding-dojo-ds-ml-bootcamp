@@ -159,12 +159,12 @@ Se graficaron las curvas ROC-AUC usando la técnica One vs. Rest:
 
 De estos resultados, se sacaron las siguientes conclusiones:
 
-- Las métricas como accuracy, precision, recall, f1 score poseen todas un valor promedio de 0.96. Un valor bastante alto, indicando que el modelo MLP es un buen modelo para predecir las actividades de las personas en base a los sensores.
-- La métrica ROC AUC reporta un valor approx de 1.00, lo que indica que el modelo tiene una muy buena tasa de aciertos.
-- Del reporte de clasificación, podemos notar que la mayoría de las clases tienen un buen performance en métricas como precision, recall, f1-score, con la excepción de las clases SITTING y STANDING, que tienen métricas como precision, recall, f1-score un poco mas bajos que las demás clases.
-- La matriz de confusión del modelo nos indica, al igual que la conclusión anterior, que el modelo está teniendo un performance levemente menor para las clases SITTING y STANDING, teniendo 50 fallos para la clase SITTING que fueron predichos como STANDING, y 29 fallos para la clase STANDING que fueron predichas como SITTING.
-- Las curvas ROC AUC one vs rest también nos indican que el modelo tiene un peor performance en estas clases. Para las otras, las areas AUC oscilan entre 0.98 y 1.00
-- Esto nos indica, que este modelo no tiene problema en detectar actividades de movimiento, no obstante se encuentran más fallos para las classes en la que la persona no se está moviendo.
+* Las métricas como accuracy, precision, recall, f1 score poseen todas un valor promedio de 0.96. Un valor bastante alto, indicando que el modelo MLP es un buen modelo para predecir las actividades de las personas en base a los sensores.
+* La métrica ROC AUC reporta un valor approx de 1.00, lo que indica que el modelo tiene una muy buena tasa de aciertos.
+* Del reporte de clasificación, podemos notar que la mayoría de las clases tienen un buen performance en métricas como precision, recall, f1-score, con la excepción de las clases SITTING y STANDING, que tienen métricas como precision, recall, f1-score un poco mas bajos que las demás clases.
+* La matriz de confusión del modelo nos indica, al igual que la conclusión anterior, que el modelo está teniendo un performance levemente menor para las clases SITTING y STANDING, teniendo 37 fallos para la clase SITTING que fueron predichos como STANDING, y 35 fallos para la clase STANDING que fueron predichas como SITTING.
+* Las curvas ROC AUC one vs rest también nos indican que el modelo tiene un peor performance en estas clases, con el AUC de 0.95 para standing y 0.94 para sitting. Para las otras, las areas AUC oscilan entre 0.98 y 1.00
+* Esto nos indica, que este modelo no tiene problema en detectar actividades de movimiento, no obstante se encuentran más fallos para las classes en la que la persona no se está moviendo.
 
 ### Visualización de curvas de aprendizaje.
 
