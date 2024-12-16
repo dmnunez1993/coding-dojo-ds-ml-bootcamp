@@ -1,5 +1,13 @@
 import matplotlib.pyplot as plt
+import pandas as pd
 import seaborn as sns
+from sklearn.metrics import (
+    accuracy_score,
+    precision_score,
+    recall_score,
+    f1_score,
+    roc_auc_score,
+)
 
 
 def graficar_matriz_confusion(matriz_confusion, labels=None, figsize=(10, 8)):
@@ -73,3 +81,69 @@ def graficar_matrices_confusion(
             j_actual = 0
 
     plt.show()
+
+
+def calcular_metricas_modelo(
+    modelo,
+    x_test,
+    y_test,
+    nombre,
+    calcular_roc_auc=False,
+):
+    y_pred = modelo.predict(x_test)
+
+    accuracy = accuracy_score(y_test, y_pred)
+    precision = precision_score(y_test, y_pred)
+    recall = recall_score(y_test, y_pred)
+    f1 = f1_score(y_test, y_pred)
+
+    if calcular_roc_auc:
+        y_pred_proba = modelo.predict_proba(x_test)[:, 1]
+        roc_auc = roc_auc_score(y_test, y_pred_proba)
+
+    print(f"Accuracy {nombre}: {accuracy}")
+    print(f"Precision {nombre}: {precision}")
+    print(f"Recall {nombre}: {recall}")
+    print(f"F1 {nombre}: {f1}")
+
+    if calcular_roc_auc:
+        print(f"ROC AUC {nombre}: {roc_auc}")
+
+
+def calcular_resumen_metricas_modelos(
+    modelos, x_test, y_test, nombres, calcular_roc_auc=False
+):
+    metricas = []
+
+    for modelo in modelos:
+        y_pred = modelo.predict(x_test)
+
+        accuracy = accuracy_score(y_test, y_pred)
+        precision = precision_score(y_test, y_pred)
+        recall = recall_score(y_test, y_pred)
+        f1 = f1_score(y_test, y_pred)
+
+        metricas_modelo = {
+            "Accuracy": accuracy,
+            "Precision": precision,
+            "Recall": recall,
+            "F1-Score": f1,
+        }
+
+        if calcular_roc_auc:
+            y_pred_proba = modelo.predict_proba(x_test)[:, 1]
+            roc_auc = roc_auc_score(y_test, y_pred_proba)
+            metricas_modelo["ROC-AUC"] = roc_auc
+
+        metricas.append(metricas_modelo)
+
+    results = pd.DataFrame(
+        metricas,
+        index=nombres,
+    )
+    print(results)
+
+    print("\n")
+
+    print("Mejores modelos por métrica:\n")
+    print(results.idxmax(axis=0))

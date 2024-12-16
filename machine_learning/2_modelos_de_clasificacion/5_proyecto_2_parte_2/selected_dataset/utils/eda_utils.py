@@ -66,7 +66,13 @@ def graficar_histogramas(
     plt.show()
 
 
-def graficar_boxplots(df, columnas_df, nro_columnas=3, figsize=(14, 10)):
+def graficar_boxplots(
+    df,
+    columnas_df,
+    nro_columnas=3,
+    figsize=(14, 10),
+    vert=True,
+):
     nro_filas = int(len(columnas_df) / nro_columnas)
     remanente = len(columnas_df) % nro_columnas
 
@@ -84,7 +90,10 @@ def graficar_boxplots(df, columnas_df, nro_columnas=3, figsize=(14, 10)):
         else:
             ax = axes[i_actual][j_actual]
 
-        sns.boxplot(df[columna], ax=ax)
+        if not vert:
+            sns.boxplot(df[columna], ax=ax, orient="h")
+        else:
+            sns.boxplot(df[columna], ax=ax)
 
         ax.set_title(f"Boxplot {columna}")
 
