@@ -31,7 +31,16 @@ En este caso, se optó primeramente por utilizar la técnica de k vecinos en con
 
 Se determinó que un valor bueno aproximado es 0.3
 
-Luego, se buscó también la mejor combinación entre epsilon y min_samples con una grilla de parámetros. Los resultados fueron:
+Luego, se buscó también la mejor combinación entre epsilon y min_samples con una grilla de parámetros.
+
+La grilla comprendió los siguientes rangos:
+
+| Hiperparámetro |  Min | Max | Step |
+| -------------- | ---: | --: | ---: |
+| eps            | 0.05 | 0.5 |  0.1 |
+| min_samples    |    1 |  15 |    1 |
+
+Los resultados fueron:
 
 | Hiperparámetro | Valor |
 | -------------- | ----: |
