@@ -34,7 +34,8 @@ def graficar_matrices_confusion(
     nombres_matrices_confusion=None,
     labels=None,
     nro_columnas=3,
-    figsize=(10, 8)
+    figsize=(10, 8),
+    camino_salida=None,
 ):
     nro_filas = int(len(matrices_confusion) / nro_columnas)
     remanente = len(matrices_confusion) % nro_columnas
@@ -79,6 +80,11 @@ def graficar_matrices_confusion(
         if j_actual >= nro_columnas:
             i_actual += 1
             j_actual = 0
+
+    plt.tight_layout()
+
+    if camino_salida is not None:
+        plt.savefig(camino_salida)
 
     plt.show()
 
