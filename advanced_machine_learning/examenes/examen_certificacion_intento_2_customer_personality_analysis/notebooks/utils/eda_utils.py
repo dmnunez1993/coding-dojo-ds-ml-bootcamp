@@ -466,7 +466,7 @@ def graficar_mapa_correlacion(
     # Crear un mapa de calor para la matriz de correlación de Pearson
     plt.figure(figsize=figsize)
     sns.heatmap(correlation_matrix, annot=True, cmap='coolwarm', center=0)
-    plt.title("Mapa de Calor de la Correlación de Pearson")
+    plt.title(f"Mapa de Calor de la Correlación por método {method}")
     plt.show()
 
 
