@@ -194,6 +194,7 @@ De los gráficos 3D y las otras gráficas podemos notar:
 De todos los resultados, podemos concluír lo siguiente:
 
 - La mejor K para estos datos es de K=3.
+- El Silhouete Score para K=3 es de 0.47, no muy alto pero nos indica que existe un clustering.
 - Con esta K, se crean 3 grupos:
   - Cluster 1: El grupo de clientes que tiene menores ingresos y gasta menos.
   - Cluster 0: El grupo de clientes que gana más pero no necesariamente gasta mucho más.
