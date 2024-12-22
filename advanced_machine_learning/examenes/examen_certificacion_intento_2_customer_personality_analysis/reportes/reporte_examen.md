@@ -291,7 +291,7 @@ En el análsis con KMeans, notamos que efectivamente se crearon grupos o cluster
 
 - Cluster 1: El grupo de clientes que tiene menores ingresos y gasta menos.
 - Cluster 0: El grupo de clientes que gana más pero no necesariamente gasta mucho más.
-- Cluster 3: El grupo de clientes que gana más y también gasta más. Adicionalmente, estos clientes tienden a gastar más en productos particulares en vez de hacer muchas compras.
+- Cluster 2: El grupo de clientes que gana más y también gasta más. Adicionalmente, estos clientes tienden a gastar más en productos particulares en vez de hacer muchas compras.
 
 Estos clusteres son de mucha importancia para la empresa, ya que le permitirá identificar comportamientos de gasto y de cantidad de compras similares en clientes, y por ende podrá tomar mejores decisiones al momento de extender ofertas.
 
