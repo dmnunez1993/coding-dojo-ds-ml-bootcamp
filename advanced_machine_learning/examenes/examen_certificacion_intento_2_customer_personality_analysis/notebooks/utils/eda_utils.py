@@ -525,6 +525,8 @@ def graficar_mapa_correlacion(
     sns.heatmap(correlation_matrix, annot=True, cmap='coolwarm', center=0)
     plt.title(f"Mapa de Calor de la Correlación por método {method}")
 
+    plt.tight_layout()
+
     if savefig_path is not None:
         plt.savefig(savefig_path)
 
