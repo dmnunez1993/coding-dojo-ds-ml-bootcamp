@@ -16,6 +16,16 @@ En este paso, se realizó primeramente un preprocesamiento de los datos
 - Se visualizaron las estadísticas descriptivas, tanto de las columnas numéricas como las categóricas.
 - Se analizaron los outliers y su proporción respecto al total.
 
+## Feature Engineering
+
+Se crearon las siguientes nuevas columnas:
+
+- Columnas de Gastos totales.
+- Columnas de cantidades de compras en diferentes medios.
+- Columnas de cant. de hijos.
+
+Esto se hace con el objetivo de usar estos features en la sección de aprendizaje no supervisado.
+
 ## EDA
 
 ### Histogramas
@@ -34,6 +44,9 @@ De los histogramas podemos destacar:
 - En la columna NumCatalogPurchases, notamos que la mayoría de clientes realizan a lo sumo hasta 5 compras del catálogo
 - En la columna NumStorePurchases, notamos que las compras están mejor distribuidas en comparación a NumWebPurchases y NumCatalogPurchases, visualizando que la mayoría de clientes compran en el rango de 3 a 5 compras approx.
 - La columna NumWebVisitsMonrth indica que la mayoría de clientes visita a lo sumo hasta 10 veces el sitio web, verificándose también potenciales outliers superiores.
+- La columna NumChildren, agregada de Teenhome y Kidhome, indica que existen clientes con familias de hasta 3 personas.
+- La columna MntSpent, agregada de todos los gastos, mantiene la distribución de sus variables originales.
+- La columna NumPurchases, agregada de las cantidades de compra, muestra una distribución más equitativa cuando la comparamos con sus columnas originales.
 
 ### Boxplots
 
