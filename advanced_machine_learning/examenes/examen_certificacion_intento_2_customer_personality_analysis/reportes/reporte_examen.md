@@ -188,8 +188,8 @@ De los gráficos 3D y las otras gráficas podemos notar:
 
 - Se forman los tres clusters, que en este caso parecen estar bien agrupados.
 - Podemos notar que a medida que incrementan los ingresos, también incrementa la cantidad gastada.
-- El clúster 1 está bien separado del resto en todos los ejes.
-- Los clústers 2 y 3 están solapados en el eje de Income, pero se nota la separación en el eje de la cantidad gastada, en la que a medida que incrementa la cantidad gastada también incrementa.
+- El cluster 1 está bien separado del resto en todos los ejes.
+- Los clusters 0 y 2 están solapados en el eje de Income, pero se puede verificar la separación en el eje de la cantidad gastada, en la que a medida que incrementa la cantidad gastada también incrementa.
 
 De todos los resultados, podemos concluír lo siguiente:
 
@@ -198,7 +198,7 @@ De todos los resultados, podemos concluír lo siguiente:
 - Con esta K, se crean 3 grupos:
   - Cluster 1: El grupo de clientes que tiene menores ingresos y gasta menos.
   - Cluster 0: El grupo de clientes que gana más pero no necesariamente gasta mucho más.
-  - Cluster 3: El grupo de clientes que gana más y también gasta más. Adicionalmente, estos clientes tienden a gastar más en productos particulares en vez de hacer muchas compras.
+  - Cluster 2: El grupo de clientes que gana más y también gasta más. Adicionalmente, estos clientes tienden a gastar más en productos particulares en vez de hacer muchas compras.
 - Estos grupos nos indican que efectivamente el agrupamiento es efectivo en detectar grupos de clientes que hacen sentido de negocio, y por lo cual, es una técnica válida para este problema.
 
 ## Modelado con MLP
