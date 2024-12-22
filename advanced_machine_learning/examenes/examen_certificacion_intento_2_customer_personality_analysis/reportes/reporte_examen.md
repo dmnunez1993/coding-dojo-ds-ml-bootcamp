@@ -230,6 +230,7 @@ Creamos el Modelo Perceptrón Multicapa (MLP) con las siguientes consideraciones
 - Se usara Adam como optimizador para la búsqueda de los mínimos.
 - Se seleccionará learning_rate como 0.001 para. Este valor debe ser bajo para alcanzar un buen mínimo con el optimizador.
 - Se seleccionará un batch_size de 16 para empezar. En caso de que el rendimiento sea bajo, se puede optar por incrementar este parámetro, teniendo en cuenta que también se deberá ajustar learning_rate en el optimizador Adam.
+- Se configurarán 50 epocas para el entrenamiento del MLP.
 - Se utilizará la técnica de early stopping para detectar cuando la pérdida de validación ya no baja, disminuyendo la posibilidad de overfitting.
 
 ### Visualización de curvas de aprendizaje.
@@ -317,4 +318,4 @@ Esto no significa que el modelo sea necesariamente malo, ya que será muy útil 
 
 El rendimiento del modelo puede mejorar potencialmente utilizando técnicas de tipo oversampling para incrementar muestras de la clase minoritaria, que en este caso sería True. En caso de ser implementado, también se debe asegurar que el modelo no presente overfitting, ya que esta técnica consiste en incrementar las cantidades de muestras, lo que puede llevar a sesgos inesperados. Para esto, se pueden utilizar métodos como la validación cruzada, asegurándose de que el modelo responda bien en diversas partes del conjunto de datos de entrnamiento.
 
-Adicionalmente, se deja entrenado el modelo predictivo de Ingresos, que se podría utilizar para imputar la columna Income en caso de que este dato no se registre en un cliente por algún motivo.
+Adicionalmente, se deja entrenado el modelo predictivo de Ingresos para imputaciones de esta columna en producción, para los casos en el que el cliente no reporte sus ingresos por algún motivo.
