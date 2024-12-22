@@ -32,7 +32,8 @@ def graficar_histogramas(
     bins=5,
     kde=False,
     rotations=None,
-    figsize=(14, 10)
+    figsize=(14, 10),
+    savefig_path=None,
 ):
     nro_filas = int(len(columnas_df) / nro_columnas)
     remanente = len(columnas_df) % nro_columnas
@@ -99,10 +100,20 @@ def graficar_histogramas(
             j_actual = 0
 
     plt.tight_layout()
+
+    if savefig_path is not None:
+        plt.savefig(savefig_path)
+
     plt.show()
 
 
-def graficar_boxplots(df, columnas_df, nro_columnas=3, figsize=(14, 10)):
+def graficar_boxplots(
+    df,
+    columnas_df,
+    nro_columnas=3,
+    figsize=(14, 10),
+    savefig_path=None,
+):
     nro_filas = int(len(columnas_df) / nro_columnas)
     remanente = len(columnas_df) % nro_columnas
 
@@ -133,6 +144,10 @@ def graficar_boxplots(df, columnas_df, nro_columnas=3, figsize=(14, 10)):
             j_actual = 0
 
     plt.tight_layout()
+
+    if savefig_path is not None:
+        plt.savefig(savefig_path)
+
     plt.show()
 
 
@@ -177,7 +192,12 @@ def graficar_boxplots_respecto_a_columna(
 
 
 def graficar_dispersiones(
-    df, columnas_x, columna_y, nro_columnas=3, figsize=(14, 10)
+    df,
+    columnas_x,
+    columna_y,
+    nro_columnas=3,
+    figsize=(14, 10),
+    savefig_path=None,
 ):
     nro_filas = int(len(columnas_x) / nro_columnas)
     remanente = len(columnas_x) % nro_columnas
@@ -219,11 +239,20 @@ def graficar_dispersiones(
             j_actual = 0
 
     plt.tight_layout()
+
+    if savefig_path is not None:
+        plt.savefig(savefig_path)
+
     plt.show()
 
 
 def graficar_barras(
-    df, columnas_x, columna_y, nro_columnas=3, figsize=(14, 10)
+    df,
+    columnas_x,
+    columna_y,
+    nro_columnas=3,
+    figsize=(14, 10),
+    savefig_path=None,
 ):
     nro_filas = int(len(columnas_x) / nro_columnas)
     remanente = len(columnas_x) % nro_columnas
@@ -255,6 +284,10 @@ def graficar_barras(
             j_actual = 0
 
     plt.tight_layout()
+
+    if savefig_path is not None:
+        plt.savefig(savefig_path)
+
     plt.show()
 
 
@@ -264,6 +297,7 @@ def graficar_barras_conteo(
     nro_columnas=3,
     figsize=(14, 10),
     rotations=None,
+    savefig_path=None,
 ):
     nro_filas = int(len(columnas_x) / nro_columnas)
     remanente = len(columnas_x) % nro_columnas
@@ -305,6 +339,10 @@ def graficar_barras_conteo(
         df.drop("counts", axis=1, inplace=True)
 
     plt.tight_layout()
+
+    if savefig_path is not None:
+        plt.savefig(savefig_path)
+
     plt.show()
 
 
@@ -315,6 +353,7 @@ def graficar_barras_conteo_contra_columna(
     nro_columnas=3,
     figsize=(14, 10),
     rotations=None,
+    savefig_path=None,
 ):
     nro_filas = int(len(columnas_x) / nro_columnas)
     remanente = len(columnas_x) % nro_columnas
@@ -355,6 +394,10 @@ def graficar_barras_conteo_contra_columna(
         df.drop("counts", axis=1, inplace=True)
 
     plt.tight_layout()
+
+    if savefig_path is not None:
+        plt.savefig(savefig_path)
+
     plt.show()
 
 
@@ -365,6 +408,7 @@ def graficar_barras_promedio_contra_columna(
     nro_columnas=3,
     figsize=(14, 10),
     rotations=None,
+    savefig_path=None,
 ):
     nro_filas = int(len(columnas_x) / nro_columnas)
     remanente = len(columnas_x) % nro_columnas
@@ -401,6 +445,10 @@ def graficar_barras_promedio_contra_columna(
             j_actual = 0
 
     plt.tight_layout()
+
+    if savefig_path is not None:
+        plt.savefig(savefig_path)
+
     plt.show()
 
 
@@ -410,6 +458,7 @@ def graficar_tortas_conteo(
     nro_columnas=3,
     figsize=(14, 10),
     rotations=None,
+    savefig_path=None,
 ):
     nro_filas = int(len(columnas_x) / nro_columnas)
     remanente = len(columnas_x) % nro_columnas
@@ -455,11 +504,19 @@ def graficar_tortas_conteo(
         df.drop("counts", axis=1, inplace=True)
 
     plt.tight_layout()
+
+    if savefig_path is not None:
+        plt.savefig(savefig_path)
+
     plt.show()
 
 
 def graficar_mapa_correlacion(
-    df, columnas_de_interes, method='pearson', figsize=(14, 10)
+    df,
+    columnas_de_interes,
+    method='pearson',
+    figsize=(14, 10),
+    savefig_path=None,
 ):
     correlation_matrix = df[[*columnas_de_interes]].corr(method=method)
     print(correlation_matrix)
@@ -467,6 +524,10 @@ def graficar_mapa_correlacion(
     plt.figure(figsize=figsize)
     sns.heatmap(correlation_matrix, annot=True, cmap='coolwarm', center=0)
     plt.title(f"Mapa de Calor de la Correlación por método {method}")
+
+    if savefig_path is not None:
+        plt.savefig(savefig_path)
+
     plt.show()
 
 

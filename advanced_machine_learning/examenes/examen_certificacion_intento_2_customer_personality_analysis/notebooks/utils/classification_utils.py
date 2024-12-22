@@ -10,7 +10,12 @@ from sklearn.metrics import (
 )
 
 
-def graficar_matriz_confusion(matriz_confusion, labels=None, figsize=(10, 8)):
+def graficar_matriz_confusion(
+    matriz_confusion,
+    labels=None,
+    figsize=(10, 8),
+    savefig_path=None,
+):
     _, ax = plt.subplots(nrows=1, ncols=1, figsize=figsize)
     sns.heatmap(
         matriz_confusion,
@@ -27,6 +32,10 @@ def graficar_matriz_confusion(matriz_confusion, labels=None, figsize=(10, 8)):
         ax.set_yticks(ticks=ax.get_yticks(), labels=labels)
     plt.title("Matriz de Confusión")
     plt.tight_layout()
+
+    if savefig_path is not None:
+        plt.savefig(savefig_path)
+
     plt.show()
 
 
